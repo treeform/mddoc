@@ -1,5 +1,10 @@
 import os, json, strutils
 
+if paramCount() != 1:
+  echo "Got to the root of your library, where the README.md is."
+  echo "Usage: mddoc path/to/library.nim"
+  quit()
+
 echo paramStr(1)
 
 discard os.execShellCmd("nim jsondoc -o:doc.json " & paramStr(1))
