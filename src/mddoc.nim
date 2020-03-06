@@ -42,6 +42,7 @@ for entry in doc["entries"]:
       .replace("{.raises: [], tags: [].}", "")
       .replace(", raises: []", "")
       .replace(", tags: []", "")
+      .strip()
     md.add "\n```\n"
   md.add "\n"
 
