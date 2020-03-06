@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.0.2"
+version       = "0.0.3"
 author        = "treeform"
 description   = "Generate Nim API docs in markdown for GitHub's README.md files."
 license       = "MIT"
