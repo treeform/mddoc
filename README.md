@@ -1,5 +1,5 @@
 # mddoc
-Generate Nim API docs in markdown for GitHub's README.md files. Great for small libraries with simple APIs.
+A tool to generate Nim API docs in markdown for GitHub's README.md files. Great for small libraries with simple APIs.
 
 Run this in the same folder as the `README.md` file:
 ```sh
