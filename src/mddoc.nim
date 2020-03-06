@@ -1,4 +1,4 @@
-import os, json, strutils
+import os, json, strutils, re
 
 if paramCount() != 1:
   echo "Got to the root of your library, where the README.md is."
@@ -12,7 +12,7 @@ discard os.execShellCmd("nim jsondoc -o:doc.json " & paramStr(1))
 var doc = parseJson(readFile("doc.json"))
 
 var md = ""
-md.add "\n# API: " & doc["nimble"].getStr() & "\n"
+md.add "# API: " & doc["nimble"].getStr() & "\n"
 md.add "\n```nim\n"
 md.add "import " & doc["nimble"].getStr() & "\n"
 md.add "```\n"
@@ -33,18 +33,26 @@ for entry in doc["entries"]:
       .replace("</ul>", "")
       .replace("&gt;", ">")
       .replace("&quot;", "\"")
+      .strip()
     md.add "\n"
   if "code" in entry:
     md.add "\n```nim\n"
+    echo entry["code"].getStr()
     md.add entry["code"].getStr()
-      .replace(".\n    ", ".")
-      .replace(",\n    ", ", ")
-      .replace("{.raises: [], tags: [].}", "")
+      .replace(".\n", ".")
+      .replace(",\n", ", ")
       .replace(", raises: []", "")
       .replace(", tags: []", "")
+      .replace(re" +", " ")
+      .replace("{. raises", "{.raises")
+      .replace(".raises: [], ", "")
+      .replace("{.raises: [], tags: [].}", "")
+      .replace("{.raises: [].}", "")
+      .replace("{tags: [].}", "")
       .strip()
     md.add "\n```\n"
   md.add "\n"
+md = "\n" & md.strip() & "\n"
 
 var readme = readFile("README.md")
 let loc = readme.find("\n# API: ")
