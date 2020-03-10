@@ -1,4 +1,4 @@
-import os, json, strutils, re
+import json, os, re, strutils
 
 if paramCount() != 1:
   echo "Got to the root of your library, where the README.md is."
@@ -23,7 +23,9 @@ if "description" in doc and doc["moduleDescription"].getStr() != "":
 
 for entry in doc["entries"]:
   echo "* ", entry["name"].getStr()
-  md.add "## **" & entry["type"].getStr()[2..^1].toLowerAscii() & "** " & entry["name"].getStr() & "\n"
+  md.add "## **" &
+      entry["type"].getStr()[2..^1].toLowerAscii() &
+      "** " & entry["name"].getStr() & "\n"
   md.add "\n"
   if "description" in entry:
     md.add entry["description"].getStr()
