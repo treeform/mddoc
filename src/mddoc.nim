@@ -25,8 +25,11 @@ for entry in doc["entries"]:
   echo "* ", entry["name"].getStr()
   md.add "## **" &
       entry["type"].getStr()[2..^1].toLowerAscii() &
-      "** " & entry["name"].getStr() & "\n"
-  md.add "\n"
+      "** "
+  md.add entry["name"].getStr()
+    .replace("&lt;", "<")
+    .replace("&gt;", ">")
+  md.add "\n\n"
   if "description" in entry:
     md.add entry["description"].getStr()
       .replace("<ul class=\"simple\">", "\n")
