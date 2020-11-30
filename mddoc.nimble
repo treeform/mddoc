@@ -1,6 +1,4 @@
-# Package
-
-version       = "0.0.4"
+version       = "0.1.0"
 author        = "treeform"
 description   = "Generate Nim API docs in markdown for GitHub's README.md files."
 license       = "MIT"
@@ -8,6 +6,4 @@ srcDir        = "src"
 
 bin = @["mddoc"]
 
-# Dependencies
-
-requires "nim >= 1.0.0"
+requires "nim >= 1.4.0"

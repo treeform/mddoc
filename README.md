@@ -3,7 +3,7 @@ A tool to generate Nim API docs in markdown for GitHub's README.md files. Great 
 
 Run this in the same folder as the `README.md` file:
 ```sh
-mddoc .\src\flippy.nim
+mddoc
 ```
 
 Your `README.md` should now have an API section.
