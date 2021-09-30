@@ -1,5 +1,5 @@
 version       = "0.1.0"
-author        = "treeform"
+author        = "Andre von Houck"
 description   = "Generate Nim API docs in markdown for GitHub's README.md files."
 license       = "MIT"
 srcDir        = "src"
