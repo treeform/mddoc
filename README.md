@@ -18,3 +18,9 @@ mddoc
 ```
 
 Your `README.md` should now have an API section.
+
+# API: mddoc
+
+```nim
+import mddoc
+```
